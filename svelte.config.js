@@ -1,7 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite'
 import sveltePreprocess from 'svelte-preprocess';
-import { compileString } from 'squint-cljs'
+// import { compileString } from 'squint-cljs';
+import { compileString } from 'squint-cljs/lib/compiler.node.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,10 +16,9 @@ const config = {
 			],
 			/** Add a custom language preprocessor */
 			cljs({ content, filename, attributes }) {
-
-			  var code = compileString(content);
-			  
-			  return {code};
+                          return compileString(content).then(code => {
+                            return {code};
+                          });
 			},
 		  })],
 
