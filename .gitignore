@@ -16,3 +16,4 @@ vite.config.ts.timestamp-*
 .idea/vcs.xml
 .lsp/.cache/db.transit.json
 cljs-svelte-kit.iml
+.clj-kondo/.cache
