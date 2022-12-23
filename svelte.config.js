@@ -16,7 +16,8 @@ const config = {
 			],
 			/** Add a custom language preprocessor */
 			cljs({ content, filename, attributes }) {
-                          return compileString(content).then(code => {
+                          return compileString(content).then(res => {
+                            let code = res.javascript;
                             return {code};
                           });
 			},
